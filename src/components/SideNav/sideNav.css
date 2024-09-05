@@ -1,0 +1,13 @@
+.sideNav {
+    width: 300px;
+    overflow-y: scroll;
+}
+
+.sideNav ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.sideNav ul li {
+    padding: 12px;
+}

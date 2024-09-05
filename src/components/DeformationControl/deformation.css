@@ -1,0 +1,134 @@
+.defComponent {
+  width: calc(100vw - 300px);
+  height: calc(100vh - 100px);
+}
+
+.defComponent img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.defTable {
+  margin-left: 300px;
+  height: 240px;
+  width: calc(100vw - 300px);
+  position: fixed;
+  bottom: 0;
+  transition: all 0.5s;
+}
+
+.defTable.hidden {
+  transform: translateY(200px);
+}
+
+.table-toggler {
+  background: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-top: 1px solid #ececec;
+}
+
+.table-toggler button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 24px;
+}
+
+.table-container {
+  height: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: white;
+  width: 100%;
+}
+
+.table-data {
+  height: 240px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.table-row {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  border-bottom: 1px solid #dadada;
+}
+
+.heading {
+  background-color: #ececec;
+  color: #3e3e3e;
+  font-weight: bold;
+}
+
+.heading .row-item:hover {
+  cursor: pointer;
+}
+
+.date-table-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button {
+  margin-left: 8px;
+  border-radius: 5px;
+  border-color: #dadada;
+  padding: 0 5px;
+}
+
+.date-table-filter {
+  margin-top: 8px;
+}
+
+.date-table-filter label {
+  margin: 5px;
+}
+
+.row-item {
+  display: flex;
+  flex: 1;
+  font-size: 14px;
+  padding: 8px 0;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+  border-right: 1px solid #dadada;
+}
+
+.row-item.danger {
+  background: #F00;
+  font-weight: 500;
+  color: #fff;
+}
+
+.row-item:hover {
+  background-color: #F0F0F0;
+  color: #3e3e3e;
+}
+
+.row-sub-container {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+}
+
+.row-sub-container .row-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.table-row:last-child,
+.row-sub-container .row-item:last-child {
+  border-bottom: 0;
+}
