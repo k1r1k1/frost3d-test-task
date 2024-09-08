@@ -5,7 +5,8 @@ const MainPage = () => {
     return (
         <>
             <NavComponent />
-            <h1>Home page</h1>
+            <h1>Тестовое задание для Simmakers</h1>
+            <h3>05/09/2024</h3>
         </>
     )
 }

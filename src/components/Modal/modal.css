@@ -1,0 +1,34 @@
+.modal-background {
+    background: #383838c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.modal-wrapper {
+    min-width: 520px;
+    background: #fff;
+    padding: 1rem;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-body {
+    margin-top: 1rem;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    padding: 0 8px;
+    cursor: pointer;
+}

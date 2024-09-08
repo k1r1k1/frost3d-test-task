@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './deformation.css'
 import DeformationTableItem from "./DeformationTableItem";
 import { filterByDate, sortByTime } from "../../helpers/time";
+import TableDateHeader from "../TableDateHeader";
 
 const DeformationControl = ({ data, trend }) => {
     const { data: tableData } = data || {};
@@ -10,6 +11,7 @@ const DeformationControl = ({ data, trend }) => {
     const [expanded, setExpanded] = useState(true)
     const [filterDateFrom, setDateFrom] = useState(undefined)
     const [filterDateTo, setDateTo] = useState(undefined)
+
     const isFiltersShowing = filterDateFrom || filterDateTo
     const filteredData = sortedTableData &&
         isFiltersShowing ?
@@ -20,12 +22,6 @@ const DeformationControl = ({ data, trend }) => {
         e.stopPropagation()
         setExpanded(false)
     }
-    const handleResetFilters = () => {
-        setDateFrom(undefined)
-        setDateTo(undefined)
-    }
-    const handleFilterFrom = (value) => setDateFrom(value)
-    const handleFilterTo = (value) => setDateTo(value)
 
     return (
         <>
@@ -35,54 +31,12 @@ const DeformationControl = ({ data, trend }) => {
             <div className={`defTable ${expanded ? '' : 'hidden'}`}>
                 <div className="table-toggler" onClick={() => setExpanded(true)}>
                     <span>Деформационная марка</span>
-                    <button type="button" onClick={handleClose}>×</button>
+                    <button type="button" className="table-toggler-close" onClick={handleClose}>×</button>
                 </div>
                 <div className="table-container">
                     <div className="table-row heading">
                         <div className="row-item">
-                            <div className="date-table-header">
-                                <div>
-                                    <span>Дата и время измерения</span>
-                                    {!isFiltersShowing &&
-                                        (<button
-                                            type="button"
-                                            className="filter-button"
-                                            onClick={() => setDateTo(
-                                                new Date(Date.now())
-                                                    .toISOString()
-                                                    .slice(0,10)
-                                                )}
-                                        >
-                                            Фильтр Ⴤ
-                                        </button>)
-                                    }
-                                    {isFiltersShowing &&
-                                        (<button
-                                            type="button"
-                                            className="filter-button"
-                                            onClick={handleResetFilters}
-                                        >
-                                            Сброс ×
-                                        </button>)
-                                    }
-                                </div>
-                                {isFiltersShowing &&
-                                    (<div className="date-table-filter">
-                                        <label>С</label>
-                                        <input
-                                            type="date"
-                                            value={filterDateFrom}
-                                            onChange={({ target }) => handleFilterFrom(target.value)}
-                                        />
-                                        <label>ПО</label>
-                                        <input
-                                            type="date"
-                                            value={filterDateTo}
-                                            onChange={({ target }) => handleFilterTo(target.value)}
-                                        />
-                                    </div>)
-                                }
-                            </div>
+                            <TableDateHeader {...{ filterDateFrom, filterDateTo, isFiltersShowing, setDateFrom, setDateTo }} />
                         </div>
                         <div className="row-item">Цикл измерения</div>
                         <div className="row-item">Отметка, м</div>

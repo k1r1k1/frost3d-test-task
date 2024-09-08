@@ -1,3 +1,7 @@
+.d-flex {
+  display: flex;
+}
+
 .defComponent {
   width: calc(100vw - 300px);
   height: calc(100vh - 100px);
@@ -15,7 +19,8 @@
   width: calc(100vw - 300px);
   position: fixed;
   bottom: 0;
-  transition: all 0.5s;
+  transition: all 0.35s;
+  background: #fff;
 }
 
 .defTable.hidden {
@@ -33,16 +38,17 @@
   border-top: 1px solid #ececec;
 }
 
-.table-toggler button {
+.table-toggler-close {
   border: none;
   background: transparent;
   cursor: pointer;
   padding: 12px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .table-container {
-  height: 200px;
+  max-height: 200px;
   display: flex;
   flex-flow: column nowrap;
   background-color: white;
@@ -50,10 +56,12 @@
 }
 
 .table-data {
-  height: 240px;
+  height: auto;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-bottom: 15px;
 }
 
 .table-row {
@@ -128,7 +136,14 @@
   border-bottom: 1px solid #dadada;
 }
 
-.table-row:last-child,
-.row-sub-container .row-item:last-child {
-  border-bottom: 0;
+.button-show-modal {
+  margin: 0 1rem 0 auto;
+  padding: 8px;
+  border: 1px solid #ececec;
+  background: transparent;
+  cursor: pointer;
+}
+
+.table-toggler button:nth-child(3) {
+  margin-left: 0;
 }

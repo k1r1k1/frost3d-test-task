@@ -27,3 +27,8 @@ export const filterByDate = (arr, from, to) => {
         return itemDate >= start.setHours(0) && itemDate <= end.setHours(0)
     });
 }
+
+export const formatDatePlotly = (dateIsoString) => {
+    const date = new Date(dateIsoString)
+    return `${date.getFullYear()}-${(date.getMonth() + 1 < 10) ? '0' : ''}${date.getMonth() + 1}-${(date.getDate() < 10) ? '0' : ''}${date.getDate()}`
+}

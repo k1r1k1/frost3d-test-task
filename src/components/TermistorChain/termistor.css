@@ -1,0 +1,43 @@
+.row-subitems-horizontal .row-item {
+  border-bottom: 0;
+}
+
+.row-subitems-horizontal {
+  display: flex;
+}
+
+.row-subitems-horizontal .row-item,
+.mark-item {
+  width: 50px;
+  flex: none;
+}
+
+.date-header {
+  height: 49px;
+  
+}
+
+.date-item {
+  width: 330px;
+  flex: none;
+}
+
+.te-header {
+  width: 60px;
+  flex: none;
+}
+
+.table-container-short {
+  display: inline-flex;
+  width: auto;
+}
+
+.table-container-vscroll {
+  display: grid;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.table-container-vscroll .table-data {
+  padding: 0;
+}
