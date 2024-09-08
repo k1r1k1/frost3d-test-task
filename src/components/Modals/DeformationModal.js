@@ -3,21 +3,22 @@ import Modal from "../Modal";
 import Plot from "react-plotly.js";
 import { formatDatePlotly } from "../../helpers/time";
 
-const TermoTrendModal = (props) => {
-    const { data: { trendData: { points, criticalEndDate }, filteredData } } = props
+const DeformationModal = (props) => {
+    const { data: { trend: { points, criticalEndDate }, data } } = props
 
     const graphData = {
         x: Object.keys(points).map((key) => formatDatePlotly(key)),
         y: Object.keys(points).map((key) => points[key]),
+        showlegend: true,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Тренд Те',
+        name: 'Тренд Δ',
         marker: { color: 'red' },
     }
     const end = {
         type: 'scatter',
         x: [formatDatePlotly(criticalEndDate), formatDatePlotly(criticalEndDate)],
-        y: [points[criticalEndDate], -5],
+        y: [points[criticalEndDate], 0],
         mode: 'lines',
         name: 'Конец эксплуатации',
         showlegend: true,
@@ -26,24 +27,26 @@ const TermoTrendModal = (props) => {
         }
     }
     const criticalData = {
-        x: filteredData.map((item) => formatDatePlotly(item.time)),
-        y: filteredData.map((item) => item.criticalTemperature),
+        x: data.map((item) => formatDatePlotly(item.time)),
+        y: data.map((item) => item.criticalDelta),
+        showlegend: true,
         type: 'scatter',
         mode: 'lines',
-        name: 'Te max, °C',
+        name: 'Макс. Δ, м',
         line: {
             color: 'orange',
             dash: 'dash'
         }
     }
-    const averageData = {
-        x: filteredData.map((item) => formatDatePlotly(item.time)),
-        y: filteredData.map((item) => item.averageTemperature),
+    const delta = {
+        x: data.map((item) => formatDatePlotly(item.time)),
+        y: data.map(({ data }) => data.delta),
+        showlegend: true,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Te, °C',
+        name: 'Δ',
         line: {
-            color: '1f77b4'
+            color: '1f77b4',
         }
     }
 
@@ -51,9 +54,11 @@ const TermoTrendModal = (props) => {
         <Modal {...props}>
             <Plot
                 data={[
+                    // minData,
                     graphData,
                     criticalData,
-                    averageData,
+                    delta,
+                    // averageData,
                     end
                 ]}
                 layout={{
@@ -65,7 +70,7 @@ const TermoTrendModal = (props) => {
                         title: 'Дата'
                     },
                     yaxis: {
-                        title: 'Температура, °C'
+                        title: 'Смещение (Δ), м'
                     },
                 }}
             />
@@ -73,4 +78,4 @@ const TermoTrendModal = (props) => {
     )
 }
 
-export default TermoTrendModal
+export default DeformationModal
